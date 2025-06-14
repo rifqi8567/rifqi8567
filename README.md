@@ -1,5 +1,9 @@
 ## Hello Friend I'm Muhammad Rifqi Thufail Fahmi 👋
-<img src="p1.jpg" alt="rifqi" width="100" height="120"/>
+
+<img src="p1.jpg" alt="rifqi" width="120" height="120" style="border-radius: 50%;">
+
+
+
 - 🌱 I’m currently learning **Java Script 💻**
 - 🌱 I’m currently learning **Laravel Framework**
 - ⚡ Coding out of **love**, not just because of college assignments.
