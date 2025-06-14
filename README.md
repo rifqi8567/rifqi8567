@@ -1,5 +1,8 @@
 ## Hello Friend I'm Muhammad Rifqi Thufail Fahmi 👋
+<<<<<<< HEAD
 
+=======
+>>>>>>> d914737 (Simpan sementara perubahan)
 <img src="p1.jpg" alt="rifqi" width="120" height="120" style="border-radius: 50%;">
 
 
