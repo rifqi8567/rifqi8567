@@ -1,5 +1,7 @@
 ## Hello Friend I'm Muhammad Rifqi Thufail Fahmi 👋
 
+![rifqi](12.png)
+
 ![alt text](https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExeXM4aWh5bDhla2N6YTA5Znh4NGM3bWFxZnV3ZDc1YWdmdXI3c2Q0NCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/26tn33aiTi1jkl6H6/giphy.gif)
 
 
