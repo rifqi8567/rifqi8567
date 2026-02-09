@@ -6,7 +6,7 @@
   <img src="12.png" alt="Muhammad Rifqi Banner" width="100%"/>
 </p>
 
-<!-- Animated Typing Effect - Fixed Height -->
+<!-- Animated Typing Effect -->
 <p align="center">
   <a href="https://git.io/typing-svg">
     <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&duration=3000&pause=1000&color=A855F7&center=true&vCenter=true&repeat=true&width=500&lines=%F0%9F%91%8B+Hey+there!+I'm+Rifqi;%F0%9F%92%BB+Fullstack+Developer;%F0%9F%9A%80+Always+Learning+New+Things;%F0%9F%8E%AF+Laravel+%7C+Flutter+%7C+JavaScript" alt="Typing SVG" />
@@ -119,14 +119,15 @@ hobbies:
 </h2>
 
 <p align="center">
-  <a href="https://github.com/rifqi8567">
-    <img height="180em" src="https://github-readme-stats.vercel.app/api?username=rifqi8567&show_icons=true&theme=radical&hide_border=true&bg_color=0D1117&title_color=A855F7&icon_color=A855F7&text_color=FFFFFF&count_private=true"/>
-    <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=rifqi8567&layout=compact&theme=radical&hide_border=true&bg_color=0D1117&title_color=A855F7&text_color=FFFFFF"/>
-  </a>
+  <img src="https://github-readme-stats.vercel.app/api?username=rifqi8567&show_icons=true&theme=radical&hide_border=true&bg_color=0D1117" alt="GitHub Stats"/>
 </p>
 
 <p align="center">
-  <img src="https://nirzak-streak-stats.vercel.app/?user=rifqi8567&theme=radical&hide_border=true&background=0D1117&stroke=A855F7&ring=A855F7&fire=FF6B6B&currStreakLabel=FFFFFF" alt="GitHub Streak"/>
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=rifqi8567&layout=compact&theme=radical&hide_border=true&bg_color=0D1117" alt="Top Languages"/>
+</p>
+
+<p align="center">
+  <img src="https://streak-stats.demolab.com?user=rifqi8567&theme=radical&hide_border=true&background=0D1117" alt="GitHub Streak"/>
 </p>
 
 <!-- Activity Graph -->
@@ -137,15 +138,22 @@ hobbies:
 <!-- Animated Divider -->
 <img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png" alt="rainbow line" width="100%">
 
-<!-- Trophy Section - FIXED URL -->
+<!-- Trophy Section - Using shields.io instead -->
 <h2 align="center">
-  🏆 GitHub Trophies 🏆
+  🏆 Achievements 🏆
 </h2>
 
 <p align="center">
-  <a href="https://github.com/ryo-ma/github-profile-trophy">
-    <img src="https://github-profile-trophy.vercel.app/?username=rifqi8567&theme=radical&no-frame=true&no-bg=true&margin-w=4&row=1&column=7" alt="GitHub Trophies"/>
-  </a>
+  <img src="https://img.shields.io/badge/Focus-Web%20Development-brightgreen?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Focus-Mobile%20Development-blue?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Lives-Indonesia-red?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Languages-Indonesian%20%26%20English-yellow?style=for-the-badge"/>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/🔥%20Passionate-Developer-orange?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/📚%20Lifelong-Learner-purple?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/💡%20Problem-Solver-cyan?style=for-the-badge"/>
 </p>
 
 <!-- Animated Divider -->
@@ -220,29 +228,18 @@ hobbies:
   <img src="https://raw.githubusercontent.com/rifqi8567/rifqi8567/output/pacman-contribution-graph.svg" alt="Pacman animation" />
 </p>
 
-<!-- Mario Animation -->
-<h3 align="center">🎮 Pixel Art Animation</h3>
-<p align="center">
-  <img src="https://github.com/rifqi8567/rifqi8567/blob/main/p1.jpg" width="400" alt="Profile Pic"/>
-</p>
-
 <!-- Animated Divider -->
 <img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png" alt="rainbow line" width="100%">
 
-<!-- Spotify - Now Playing -->
+<!-- Fun GIFs -->
 <h2 align="center">
-  🎵 Vibes 🎵
+  💻 Coding Vibes 💻
 </h2>
 
 <p align="center">
-  <img src="https://spotify-github-profile.kittinanx.com/api/view?uid=31rvbz4wd6cnfclc7wvhyxqswjni&cover_image=true&theme=novatorem&bar_color=a855f7&bar_color_cover=false" alt="Spotify"/>
-</p>
-
-<!-- Fun GIF -->
-<p align="center">
   <img height="150" src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExYXlicDloY29rcXUzYW9wYzM4ZnE3bnM3eGloaWVxNDQ4dHBvZHpyciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/TFPdmm3rdzeZ0kP3zG/giphy.gif" alt="Coding GIF"/>
   <img height="150" src="https://media.giphy.com/media/3kPDmoWdBpQPNhCnUG/giphy.gif" alt="Coding GIF 2"/>
-  <img height="150" src="https://media.giphy.com/media/du3J3cXyzhj75IOgvA/giphy.gif" alt="Coding GIF 3"/>
+  <img height="150" src="https://media.giphy.com/media/du3J3cXyzhj75IOgvA/giphy.gif" alt="GitHub GIF"/>
 </p>
 
 <!-- Footer Message -->
