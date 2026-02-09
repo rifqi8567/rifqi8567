@@ -249,16 +249,10 @@ hobbies:
   <img src="https://raw.githubusercontent.com/rifqi8567/rifqi8567/output/snake.svg" alt="Snake animation" />
 </p>
 
-<!-- 3D Contribution Calendar -->
-<h3 align="center">📊 3D Contribution Calendar</h3>
+<!-- 3D Contribution Graph -->
+<h3 align="center">📊 3D Contribution Graph</h3>
 <p align="center">
-  <img src="https://github.com/rifqi8567/rifqi8567/blob/main/profile-3d-contrib/profile-night-rainbow.svg" alt="3D Contribution"/>
-</p>
-
-<!-- Animated Isometric Contribution -->
-<h3 align="center">🎲 Isometric Contributions</h3>
-<p align="center">
-  <img src="https://github-profile-3d-contrib.vercel.app/api?username=rifqi8567&theme=dracula" alt="Isometric Contributions"/>
+  <img src="./profile-3d-contrib/profile-night-rainbow.svg" alt="3D Contribution"/>
 </p>
 
 <!-- Animated Divider -->
