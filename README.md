@@ -125,12 +125,16 @@ hobbies:
 
 <p align="center">
   <img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=rifqi8567&theme=radical" alt="Stats"/>
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=rifqi8567&theme=radical&utcOffset=7" alt="Productive Time"/>
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=rifqi8567&theme=radical" alt="Top Languages by Repo"/>
 </p>
 
 <p align="center">
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=rifqi8567&theme=radical" alt="Top Languages by Repo"/>
   <img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=rifqi8567&theme=radical" alt="Top Languages by Commit"/>
+</p>
+
+<!-- Activity Graph -->
+<p align="center">
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=rifqi8567&bg_color=141321&color=A855F7&line=A855F7&point=FFFFFF&area=true&hide_border=true" alt="Activity Graph"/>
 </p>
 
 <!-- Streak Stats -->
