@@ -157,31 +157,23 @@ hobbies:
 <table align="center">
 <tr>
 <td align="center" width="25%">
-  <img src="https://img.icons8.com/fluency/96/web.png" width="60"/>
-  <br><b>Web Dev</b>
-  <br><sub>Laravel, JS, PHP</sub>
+  <a href="https://skillicons.dev"><img src="https://skillicons.dev/icons?i=laravel,js,php" width="80"/></a>
+  <br><b>🌐 Web Dev</b>
 </td>
 <td align="center" width="25%">
-  <img src="https://img.icons8.com/fluency/96/android-os.png" width="60"/>
-  <br><b>Mobile Dev</b>
-  <br><sub>Flutter, Dart</sub>
+  <a href="https://skillicons.dev"><img src="https://skillicons.dev/icons?i=flutter,dart" width="60"/></a>
+  <br><b>📱 Mobile Dev</b>
 </td>
 <td align="center" width="25%">
-  <img src="https://img.icons8.com/fluency/96/database.png" width="60"/>
-  <br><b>Database</b>
-  <br><sub>MySQL, Supabase</sub>
+  <a href="https://skillicons.dev"><img src="https://skillicons.dev/icons?i=mysql,supabase" width="60"/></a>
+  <br><b>🗄️ Database</b>
 </td>
 <td align="center" width="25%">
-  <img src="https://img.icons8.com/fluency/96/git.png" width="60"/>
-  <br><b>Version Control</b>
-  <br><sub>Git, GitHub</sub>
+  <a href="https://skillicons.dev"><img src="https://skillicons.dev/icons?i=git,github" width="60"/></a>
+  <br><b>🔄 Version Control</b>
 </td>
 </tr>
 </table>
-
-<p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=6,11,20&height=1"/>
-</p>
 
 <!-- Animated Divider -->
 <img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png" alt="rainbow line" width="100%">
@@ -255,6 +247,18 @@ hobbies:
 <h3 align="center">🐍 Snake eating my contributions</h3>
 <p align="center">
   <img src="https://raw.githubusercontent.com/rifqi8567/rifqi8567/output/snake.svg" alt="Snake animation" />
+</p>
+
+<!-- 3D Contribution Calendar -->
+<h3 align="center">📊 3D Contribution Calendar</h3>
+<p align="center">
+  <img src="https://github.com/rifqi8567/rifqi8567/blob/main/profile-3d-contrib/profile-night-rainbow.svg" alt="3D Contribution"/>
+</p>
+
+<!-- Animated Isometric Contribution -->
+<h3 align="center">🎲 Isometric Contributions</h3>
+<p align="center">
+  <img src="https://github-profile-3d-contrib.vercel.app/api?username=rifqi8567&theme=dracula" alt="Isometric Contributions"/>
 </p>
 
 <!-- Animated Divider -->
