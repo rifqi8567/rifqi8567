@@ -249,12 +249,6 @@ hobbies:
   <img src="https://raw.githubusercontent.com/rifqi8567/rifqi8567/output/snake.svg" alt="Snake animation" />
 </p>
 
-<!-- Pacman Animation -->
-<h3 align="center">👾 Pacman eating my contributions</h3>
-<p align="center">
-  <img src="https://raw.githubusercontent.com/rifqi8567/rifqi8567/output/pacman-contribution-graph.svg" alt="Pacman animation" />
-</p>
-
 <!-- 3D Contribution Graph -->
 <h3 align="center">📊 3D Contribution Graph</h3>
 <p align="center">
