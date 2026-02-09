@@ -111,61 +111,72 @@ hobbies:
 <!-- Animated Divider -->
 <img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png" alt="rainbow line" width="100%">
 
-<!-- GitHub Stats Section -->
+<!-- GitHub Stats Section - Using Different Provider -->
 <h2 align="center">
   <img src="https://media.giphy.com/media/cj87CxfRtrUifF3Ryk/giphy.gif" width="30" height="30">
   GitHub Analytics
   <img src="https://media.giphy.com/media/cj87CxfRtrUifF3Ryk/giphy.gif" width="30" height="30">
 </h2>
 
+<!-- Stats Cards using github-profile-summary-cards -->
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=rifqi8567&show_icons=true&theme=radical&hide_border=true&bg_color=0D1117" alt="GitHub Stats"/>
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=rifqi8567&theme=radical" alt="Profile Details"/>
 </p>
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=rifqi8567&layout=compact&theme=radical&hide_border=true&bg_color=0D1117" alt="Top Languages"/>
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=rifqi8567&theme=radical" alt="Stats"/>
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=rifqi8567&theme=radical&utcOffset=7" alt="Productive Time"/>
 </p>
 
+<p align="center">
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=rifqi8567&theme=radical" alt="Top Languages by Repo"/>
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=rifqi8567&theme=radical" alt="Top Languages by Commit"/>
+</p>
+
+<!-- Streak Stats -->
 <p align="center">
   <img src="https://streak-stats.demolab.com?user=rifqi8567&theme=radical&hide_border=true&background=0D1117" alt="GitHub Streak"/>
 </p>
 
-<!-- Activity Graph -->
-<p align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=rifqi8567&bg_color=0D1117&color=A855F7&line=A855F7&point=FFFFFF&area=true&hide_border=true" alt="Activity Graph"/>
-</p>
-
 <!-- Animated Divider -->
 <img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png" alt="rainbow line" width="100%">
 
-<!-- Trophy Section - Using shields.io instead -->
+<!-- Achievement Section - More Visual -->
 <h2 align="center">
-  🏆 Achievements 🏆
+  🏆 What I Bring to the Table 🏆
 </h2>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Focus-Web%20Development-brightgreen?style=for-the-badge"/>
-  <img src="https://img.shields.io/badge/Focus-Mobile%20Development-blue?style=for-the-badge"/>
-  <img src="https://img.shields.io/badge/Lives-Indonesia-red?style=for-the-badge"/>
-  <img src="https://img.shields.io/badge/Languages-Indonesian%20%26%20English-yellow?style=for-the-badge"/>
+  <img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=6,11,20&height=1"/>
 </p>
 
+<table align="center">
+<tr>
+<td align="center" width="25%">
+  <img src="https://img.icons8.com/fluency/96/web.png" width="60"/>
+  <br><b>Web Dev</b>
+  <br><sub>Laravel, JS, PHP</sub>
+</td>
+<td align="center" width="25%">
+  <img src="https://img.icons8.com/fluency/96/android-os.png" width="60"/>
+  <br><b>Mobile Dev</b>
+  <br><sub>Flutter, Dart</sub>
+</td>
+<td align="center" width="25%">
+  <img src="https://img.icons8.com/fluency/96/database.png" width="60"/>
+  <br><b>Database</b>
+  <br><sub>MySQL, Supabase</sub>
+</td>
+<td align="center" width="25%">
+  <img src="https://img.icons8.com/fluency/96/git.png" width="60"/>
+  <br><b>Version Control</b>
+  <br><sub>Git, GitHub</sub>
+</td>
+</tr>
+</table>
+
 <p align="center">
-  <img src="https://img.shields.io/badge/🔥%20Passionate-Developer-orange?style=for-the-badge"/>
-  <img src="https://img.shields.io/badge/📚%20Lifelong-Learner-purple?style=for-the-badge"/>
-  <img src="https://img.shields.io/badge/💡%20Problem-Solver-cyan?style=for-the-badge"/>
-</p>
-
-<!-- Animated Divider -->
-<img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png" alt="rainbow line" width="100%">
-
-<!-- Top Contributed Repo -->
-<h2 align="center">
-  📊 Top Contributed Repositories 📊
-</h2>
-
-<p align="center">
-  <img src="https://github-contributor-stats.vercel.app/api?username=rifqi8567&limit=5&theme=radical&hide_border=true&combine_all_yearly_contributions=true" alt="Top Contributions"/>
+  <img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=6,11,20&height=1"/>
 </p>
 
 <!-- Animated Divider -->
@@ -220,12 +231,6 @@ hobbies:
 <h3 align="center">🐍 Snake eating my contributions</h3>
 <p align="center">
   <img src="https://raw.githubusercontent.com/rifqi8567/rifqi8567/output/snake.svg" alt="Snake animation" />
-</p>
-
-<!-- Pacman Animation -->
-<h3 align="center">👾 Pacman munching contributions</h3>
-<p align="center">
-  <img src="https://raw.githubusercontent.com/rifqi8567/rifqi8567/output/pacman-contribution-graph.svg" alt="Pacman animation" />
 </p>
 
 <!-- Animated Divider -->
