@@ -186,6 +186,85 @@ hobbies:
 <!-- Animated Divider -->
 <img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png" alt="rainbow line" width="100%">
 
+<!-- Portfolio Section -->
+<h2 align="center">
+  🌐 My Portfolio 🌐
+</h2>
+
+<p align="center">
+  <a href="https://rifqi8567.github.io/Rif123v2/" target="_blank">
+    <img src="https://img.shields.io/badge/🚀%20Visit%20My%20Portfolio-A855F7?style=for-the-badge&logoColor=white" alt="Portfolio"/>
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://rifqi8567.github.io/Rif123v2/" target="_blank">
+    <img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=6,11,20&height=80&text=rifqi8567.github.io/Rif123v2&fontSize=20&fontColor=fff&animation=twinkling" alt="Portfolio Link"/>
+  </a>
+</p>
+
+<!-- Animated Divider -->
+<img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png" alt="rainbow line" width="100%">
+
+<!-- Certifications Section -->
+<h2 align="center">
+  📜 Certifications 📜
+</h2>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Dicoding-Belajar%20Dasar%20Pemrograman%20Web-1A73E8?style=for-the-badge&logo=google&logoColor=white"/>
+</p>
+<p align="center">
+  <img src="https://img.shields.io/badge/Dicoding-Belajar%20Membuat%20Aplikasi%20Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white"/>
+</p>
+<p align="center">
+  <img src="https://img.shields.io/badge/Dicoding-Belajar%20Fundamental%20Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white"/>
+</p>
+<p align="center">
+  <img src="https://img.shields.io/badge/Dicoding-Penerapan%20Data%20Science%20dengan%20Microsoft%20Fabric-5E2D91?style=for-the-badge&logo=microsoft&logoColor=white"/>
+</p>
+
+<p align="center">
+  <a href="https://www.dicoding.com/users/rifqi8567/academies" target="_blank">
+    <img src="https://img.shields.io/badge/View%20All%20Certificates-FF6B6B?style=for-the-badge&logo=acclaim&logoColor=white"/>
+  </a>
+</p>
+
+<!-- Animated Divider -->
+<img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png" alt="rainbow line" width="100%">
+
+<!-- Featured Repositories Section -->
+<h2 align="center">
+  ⭐ Featured Repositories ⭐
+</h2>
+
+<p align="center">
+  <a href="https://github.com/rifqi8567/Rif123v2">
+    <img src="https://github-readme-stats.vercel.app/api/pin/?username=rifqi8567&repo=Rif123v2&theme=radical&hide_border=true&bg_color=0D1117" alt="Rif123v2"/>
+  </a>
+  <a href="https://github.com/rifqi8567/E-commerce-web">
+    <img src="https://github-readme-stats.vercel.app/api/pin/?username=rifqi8567&repo=E-commerce-web&theme=radical&hide_border=true&bg_color=0D1117" alt="E-commerce"/>
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/rifqi8567/Perpustakaan">
+    <img src="https://github-readme-stats.vercel.app/api/pin/?username=rifqi8567&repo=Perpustakaan&theme=radical&hide_border=true&bg_color=0D1117" alt="Perpustakaan"/>
+  </a>
+  <a href="https://github.com/rifqi8567/latihan_portofolio">
+    <img src="https://github-readme-stats.vercel.app/api/pin/?username=rifqi8567&repo=latihan_portofolio&theme=radical&hide_border=true&bg_color=0D1117" alt="Latihan Portofolio"/>
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/rifqi8567?tab=repositories" target="_blank">
+    <img src="https://img.shields.io/badge/View%20All%20Repositories-A855F7?style=for-the-badge&logo=github&logoColor=white"/>
+  </a>
+</p>
+
+<!-- Animated Divider -->
+<img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png" alt="rainbow line" width="100%">
+
 <!-- Dev Quote -->
 <h2 align="center">
   ✍️ Random Dev Quote ✍️
