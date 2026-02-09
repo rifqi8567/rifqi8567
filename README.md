@@ -249,12 +249,6 @@ hobbies:
   <img src="https://raw.githubusercontent.com/rifqi8567/rifqi8567/output/snake.svg" alt="Snake animation" />
 </p>
 
-<!-- 3D Contribution Graph -->
-<h3 align="center">📊 3D Contribution Graph</h3>
-<p align="center">
-  <img src="./profile-3d-contrib/profile-night-rainbow.svg" alt="3D Contribution"/>
-</p>
-
 <!-- Animated Divider -->
 <img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png" alt="rainbow line" width="100%">
 
