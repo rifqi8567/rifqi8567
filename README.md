@@ -1,9 +1,12 @@
-<!-- Cool Wave Header -->
-<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=200&section=header&text=Muhammad%20Rifqi&fontSize=50&fontColor=fff&animation=fadeIn&fontAlignY=35&desc=Fullstack%20Developer%20%7C%20Indonesia%20🇮🇩&descAlignY=55&descSize=18"/>
-
-<!-- Header Banner -->
+<!-- Animated Console Header -->
 <p align="center">
-  <img src="12.png" alt="Muhammad Rifqi Banner" width="100%"/>
+  <picture>
+    <source media="(max-width: 760px) and (prefers-color-scheme: dark)" srcset="./assets/hero/agent-console-v5-mobile-dark.svg">
+    <source media="(max-width: 760px)" srcset="./assets/hero/agent-console-v5-mobile-light.svg">
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/hero/agent-console-v5-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="./assets/hero/agent-console-v5-light.svg">
+    <img src="./assets/hero/agent-console-v5-dark.svg" alt="Muhammad Rifqi - Fullstack Developer" width="100%">
+  </picture>
 </p>
 
 <!-- Animated Typing Effect -->
