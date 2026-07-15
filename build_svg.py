@@ -1,0 +1,425 @@
+"""
+Build completely ORIGINAL GitHub profile SVG header.
+Design: "NEURAL.DEVNET" - Original cyberpunk developer profile card
+Aesthetic: Amber/Gold + Electric Blue on Deep Navy
+Completely different structure from terminal console design.
+"""
+from PIL import Image, ImageEnhance, ImageFilter
+
+# Dense → sparse (dark pixels = dense ASCII chars)
+ASCII_CHARS = "@#%S?*+;:,. "
+
+def image_to_ascii(image_path, width=82, height=62):
+    img = Image.open(image_path)
+    # Transparent bg → dark navy bg
+    if img.mode == 'RGBA':
+        bg = Image.new('RGB', img.size, (4, 9, 18))
+        bg.paste(img, mask=img.split()[3])
+        img = bg
+    w, h = img.size
+    crop_left  = int(w * 0.12)
+    crop_right = int(w * 0.88)
+    crop_top   = int(h * 0.05)
+    crop_bottom= int(h * 0.85)
+    img = img.crop((crop_left, crop_top, crop_right, crop_bottom))
+    img = img.resize((width, height), Image.LANCZOS)
+    img = img.convert('L')
+    img = img.filter(ImageFilter.SHARPEN)
+    img = img.filter(ImageFilter.SHARPEN)
+    e = ImageEnhance.Contrast(img); img = e.enhance(1.85)
+    e = ImageEnhance.Brightness(img); img = e.enhance(1.08)
+    pixels = list(img.getdata())
+    lines = []
+    for i in range(0, len(pixels), width):
+        row = pixels[i:i+width]
+        line = "".join(ASCII_CHARS[int(p/255*(len(ASCII_CHARS)-1))] for p in row)
+        lines.append(line)
+    return lines
+
+def escape_xml(s):
+    return (s.replace("&","&amp;").replace("<","&lt;")
+             .replace(">","&gt;").replace('"',"&quot;"))
+
+def build_tspans(lines, x=42, y0=96.0, dy=6.65):
+    return "\n".join(
+        f'<tspan x="{x}" y="{y0+i*dy:.2f}" xml:space="preserve">{escape_xml(l)}</tspan>'
+        for i, l in enumerate(lines)
+    )
+
+# ──────────────────────────────────────────────────────────────
+#  DESKTOP SVG  (1180 × 620)
+# ──────────────────────────────────────────────────────────────
+DESKTOP_CSS = """
+    .mono{font-family:'Courier New',Consolas,monospace;}
+    .ascii{font-family:'Courier New',Consolas,monospace;font-size:6.5px;letter-spacing:-0.15px;}
+    .hd{font-family:'Courier New',Consolas,monospace;font-size:13px;font-weight:700;letter-spacing:4px;}
+    .hd-sm{font-family:'Courier New',Consolas,monospace;font-size:9px;letter-spacing:2px;}
+    .sec{font-family:'Courier New',Consolas,monospace;font-size:9px;font-weight:700;letter-spacing:2px;}
+    .fk{font-family:'Courier New',Consolas,monospace;font-size:11px;font-weight:700;}
+    .fv{font-family:'Courier New',Consolas,monospace;font-size:11px;}
+    .sk{font-family:'Courier New',Consolas,monospace;font-size:10px;}
+    .sb{font-family:'Courier New',Consolas,monospace;font-size:9px;letter-spacing:0.3px;}
+    .br{font-family:'Courier New',Consolas,monospace;font-size:10.5px;}
+    .ft{font-family:'Courier New',Consolas,monospace;font-size:9px;letter-spacing:2.5px;}
+    text,tspan{white-space:pre;}
+"""
+
+def build_desktop(ascii_lines):
+    tspans = build_tspans(ascii_lines, x=42, y0=96.0, dy=6.65)
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="620" viewBox="0 0 1180 620" role="img" aria-labelledby="svg-title svg-desc">
+<title id="svg-title">Muhammad Rifqi Thufail Fahmi | Fullstack Developer</title>
+<desc id="svg-desc">Neural devnet profile card - Muhammad Rifqi, Fullstack Developer from Indonesia. Laravel, Flutter, JavaScript.</desc>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#040912"/><stop offset="0.5" stop-color="#070E1E"/><stop offset="1" stop-color="#030710"/>
+  </linearGradient>
+  <linearGradient id="amber" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#FCD34D"><animate attributeName="stop-color" values="#FCD34D;#F59E0B;#FBBF24;#FCD34D" dur="6s" repeatCount="indefinite"/></stop>
+    <stop offset="1" stop-color="#F97316"><animate attributeName="stop-color" values="#F97316;#FCD34D;#F59E0B;#F97316" dur="8s" repeatCount="indefinite"/></stop>
+  </linearGradient>
+  <linearGradient id="bdr" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#F59E0B" stop-opacity="0.85"/><stop offset="0.32" stop-color="#0EA5E9" stop-opacity="0.85"/>
+    <stop offset="0.65" stop-color="#10B981" stop-opacity="0.85"/><stop offset="1" stop-color="#F59E0B" stop-opacity="0.85"/>
+  </linearGradient>
+  <radialGradient id="phalo" cx="50%" cy="45%">
+    <stop offset="0" stop-color="#F59E0B" stop-opacity="0.2"/><stop offset="0.55" stop-color="#F97316" stop-opacity="0.07"/>
+    <stop offset="1" stop-color="#F59E0B" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="scan" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#F59E0B" stop-opacity="0"/><stop offset="0.5" stop-color="#F59E0B" stop-opacity="0.24"/>
+    <stop offset="1" stop-color="#F59E0B" stop-opacity="0"/>
+  </linearGradient>
+  <pattern id="circ" width="80" height="80" patternUnits="userSpaceOnUse">
+    <path d="M0 40H25 M25 40V10 M25 10H55 M55 10V40 M55 40H80" fill="none" stroke="#0EA5E9" stroke-width="0.55" opacity="0.07"/>
+    <path d="M10 80V55 M10 55H40 M40 55V80" fill="none" stroke="#F59E0B" stroke-width="0.55" opacity="0.05"/>
+    <path d="M60 0V30 M60 30H80" fill="none" stroke="#10B981" stroke-width="0.55" opacity="0.05"/>
+    <rect x="23" y="8" width="4" height="4" fill="none" stroke="#0EA5E9" stroke-width="0.5" opacity="0.14"/>
+    <rect x="53" y="38" width="4" height="4" fill="none" stroke="#F59E0B" stroke-width="0.5" opacity="0.11"/>
+    <circle cx="10" cy="55" r="2" fill="#10B981" opacity="0.1"/>
+    <circle cx="80" cy="40" r="1.5" fill="#0EA5E9" opacity="0.12"/>
+  </pattern>
+  <pattern id="hdots" width="24" height="20.8" patternUnits="userSpaceOnUse">
+    <circle cx="0"  cy="0"    r="0.8" fill="#F59E0B" opacity="0.13"/>
+    <circle cx="12" cy="10.4" r="0.8" fill="#F59E0B" opacity="0.10"/>
+    <circle cx="24" cy="0"    r="0.8" fill="#F59E0B" opacity="0.08"/>
+    <circle cx="0"  cy="20.8" r="0.8" fill="#F59E0B" opacity="0.08"/>
+  </pattern>
+  <clipPath id="pclip"><rect x="22" y="76" width="432" height="480" rx="6"/></clipPath>
+  <mask id="prev"><rect x="22" y="76" width="432" height="0" rx="6" fill="white"><animate attributeName="height" from="0" to="480" dur="2.2s" begin="0.15s" fill="freeze"/></rect></mask>
+  <filter id="glitch">
+    <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="1" result="n" seed="2">
+      <animate attributeName="seed" values="1;3;5;2;4;1" dur="9s" repeatCount="indefinite"/>
+    </feTurbulence>
+    <feDisplacementMap in="SourceGraphic" in2="n" xChannelSelector="R" yChannelSelector="G" scale="0">
+      <animate attributeName="scale" values="0;0;0;5;0;0;3;0;0" keyTimes="0;0.7;0.72;0.74;0.76;0.86;0.89;0.91;1" dur="8s" repeatCount="indefinite"/>
+    </feDisplacementMap>
+  </filter>
+  <style>{DESKTOP_CSS}</style>
+</defs>
+
+<!-- BACKGROUND -->
+<rect width="1180" height="620" rx="16" fill="url(#bg)"/>
+<rect width="1180" height="620" rx="16" fill="url(#circ)"/>
+<rect x="1.5" y="1.5" width="1177" height="617" rx="15" fill="none" stroke="url(#bdr)" stroke-width="2.5">
+  <animate attributeName="opacity" values="0.5;0.95;0.5" dur="4.5s" repeatCount="indefinite"/>
+</rect>
+
+<!-- HEADER -->
+<rect x="0" y="0" width="1180" height="52" rx="16" fill="#040912" fill-opacity="0.96"/>
+<rect x="0" y="36" width="1180" height="16" fill="#040912" fill-opacity="0.96"/>
+<line x1="0" y1="52" x2="1180" y2="52" stroke="#F59E0B" stroke-width="1.2" opacity="0.38"/>
+<!-- Signal bars (left) -->
+<rect x="16" y="15" width="5" height="22" rx="1" fill="#F59E0B"><animate attributeName="opacity" values="0.9;0.4;0.9" dur="1.1s" repeatCount="indefinite"/></rect>
+<rect x="25" y="19" width="5" height="18" rx="1" fill="#F59E0B"><animate attributeName="opacity" values="0.7;0.3;0.7" dur="1.4s" repeatCount="indefinite"/></rect>
+<rect x="34" y="23" width="5" height="14" rx="1" fill="#F59E0B"><animate attributeName="opacity" values="0.5;0.2;0.5" dur="1.7s" repeatCount="indefinite"/></rect>
+<rect x="43" y="27" width="5" height="10" rx="1" fill="#F59E0B" opacity="0.35"/>
+<rect x="52" y="30" width="5" height="7"  rx="1" fill="#475569" opacity="0.3"/>
+<text x="66" y="33" class="hd-sm" fill="#F59E0B" opacity="0.78">SIG.STRONG</text>
+<text x="175" y="33" class="hd-sm" fill="#475569">LAT:-6.2°S  LON:106.8°E  TZ:WIB+7</text>
+<!-- Title center (glitch) -->
+<text x="590" y="34" text-anchor="middle" class="hd" fill="#E2E8F0" filter="url(#glitch)">RIFQI.SYS  ◆  NEURAL.DEVNET  ◆  v2.1</text>
+<!-- Status right -->
+<text x="1038" y="29" class="hd-sm" fill="#475569">STATUS:</text>
+<text x="1090" y="29" class="hd-sm" fill="#10B981">ONLINE</text>
+<circle cx="1163" cy="26" r="5" fill="#10B981">
+  <animate attributeName="r" values="4.5;6.5;4.5" dur="2.5s" repeatCount="indefinite"/>
+  <animate attributeName="fill-opacity" values="1;0.45;1" dur="2.5s" repeatCount="indefinite"/>
+</circle>
+
+<!-- DIVIDER -->
+<line x1="468" y1="60" x2="468" y2="566" stroke="#F59E0B" stroke-width="0.8" opacity="0.18">
+  <animate attributeName="opacity" values="0.1;0.28;0.1" dur="5s" repeatCount="indefinite"/>
+</line>
+<circle cx="468" cy="140" r="3" fill="#F59E0B" opacity="0.4"/>
+<circle cx="468" cy="255" r="3" fill="#0EA5E9" opacity="0.4"/>
+<circle cx="468" cy="385" r="3" fill="#10B981" opacity="0.4"/>
+<circle cx="468" cy="498" r="3" fill="#A78BFA" opacity="0.4"/>
+
+<!-- ══ LEFT: BIOMETRIC PORTRAIT ══ -->
+<text x="24" y="72" class="sec" fill="#F59E0B" opacity="0.68">◈ BIOMETRIC.ID  //  IDENTITY.SCAN  //  AUTHORIZED ◈</text>
+
+<g clip-path="url(#pclip)">
+  <rect x="22" y="76" width="432" height="480" fill="url(#hdots)"/>
+  <ellipse cx="238" cy="316" rx="200" ry="234" fill="url(#phalo)"/>
+  <ellipse cx="238" cy="316" rx="185" ry="130" fill="none" stroke="#F59E0B" stroke-width="0.7" stroke-dasharray="5 22" opacity="0.1">
+    <animateTransform attributeName="transform" type="rotate" from="0 238 316" to="360 238 316" dur="36s" repeatCount="indefinite"/>
+  </ellipse>
+  <ellipse cx="238" cy="316" rx="140" ry="98" fill="none" stroke="#0EA5E9" stroke-width="0.7" stroke-dasharray="12 20" opacity="0.08">
+    <animateTransform attributeName="transform" type="rotate" from="360 238 316" to="0 238 316" dur="26s" repeatCount="indefinite"/>
+  </ellipse>
+</g>
+<g clip-path="url(#pclip)" mask="url(#prev)">
+  <text class="ascii" fill="url(#amber)" font-family="'Courier New',Consolas,monospace" font-size="6.5px" letter-spacing="-0.15px">
+{tspans}
+  </text>
+</g>
+
+<!-- Portrait corner brackets -->
+<path d="M22 76H64 M22 76V118" fill="none" stroke="#F59E0B" stroke-width="2.2" opacity="0.88"><animate attributeName="opacity" values="0.88;0.42;0.88" dur="3.2s" repeatCount="indefinite"/></path>
+<path d="M454 76H412 M454 76V118" fill="none" stroke="#F59E0B" stroke-width="2.2" opacity="0.88"><animate attributeName="opacity" values="0.88;0.42;0.88" dur="3.2s" begin="0.6s" repeatCount="indefinite"/></path>
+<path d="M22 556H64 M22 556V514" fill="none" stroke="#F59E0B" stroke-width="2.2" opacity="0.88"><animate attributeName="opacity" values="0.88;0.42;0.88" dur="3.2s" begin="1.2s" repeatCount="indefinite"/></path>
+<path d="M454 556H412 M454 556V514" fill="none" stroke="#F59E0B" stroke-width="2.2" opacity="0.88"><animate attributeName="opacity" values="0.88;0.42;0.88" dur="3.2s" begin="1.8s" repeatCount="indefinite"/></path>
+<!-- Pulse rings -->
+<circle cx="22" cy="76" r="3" fill="none" stroke="#F59E0B" stroke-width="1">
+  <animate attributeName="r" values="3;20;3" dur="4s" repeatCount="indefinite"/>
+  <animate attributeName="opacity" values="0.8;0;0.8" dur="4s" repeatCount="indefinite"/>
+</circle>
+<circle cx="454" cy="556" r="3" fill="none" stroke="#F59E0B" stroke-width="1">
+  <animate attributeName="r" values="3;20;3" dur="4s" begin="2s" repeatCount="indefinite"/>
+  <animate attributeName="opacity" values="0.8;0;0.8" dur="4s" begin="2s" repeatCount="indefinite"/>
+</circle>
+<!-- Scan line over portrait -->
+<rect x="22" y="0" width="432" height="65" fill="url(#scan)" opacity="0.85">
+  <animateTransform attributeName="transform" type="translate" from="0 76" to="0 556" dur="5.5s" repeatCount="indefinite"/>
+</rect>
+<text x="24" y="570" class="sec" fill="#F59E0B" opacity="0.52">◈ SCAN.COMPLETE  //  MATCH.FOUND  //  TRUST:HIGH ◈</text>
+
+<!-- ══ RIGHT: SYSTEM DATA ══ -->
+
+<!-- Section 1: OPERATOR.PROFILE -->
+<rect x="480" y="60" width="686" height="152" rx="5" fill="#0EA5E9" fill-opacity="0.04" stroke="#0EA5E9" stroke-opacity="0.2" stroke-width="0.8"/>
+<text x="490" y="78" class="sec" fill="#0EA5E9" opacity="0.92">◆ OPERATOR.PROFILE</text>
+<line x1="490" y1="83" x2="1155" y2="83" stroke="#0EA5E9" stroke-width="0.6" opacity="0.28"/>
+<text x="494" y="101"><tspan class="fk" fill="#475569">  CODENAME  </tspan><tspan class="fv" fill="#FCD34D">Muhammad Rifqi Thufail Fahmi</tspan></text>
+<text x="494" y="118"><tspan class="fk" fill="#475569">  ROLE      </tspan><tspan class="fv" fill="#E2E8F0">Fullstack Developer</tspan></text>
+<text x="494" y="135"><tspan class="fk" fill="#475569">  FOCUS     </tspan><tspan class="fv" fill="#E2E8F0">Laravel  /  Flutter  /  JavaScript</tspan></text>
+<text x="494" y="152"><tspan class="fk" fill="#475569">  BASE      </tspan><tspan class="fv" fill="#E2E8F0">Indonesia  </tspan><tspan class="fv" fill="#475569">//  </tspan><tspan class="fv" fill="#10B981">● ACTIVE</tspan><tspan class="fv" fill="#475569"> — Building &amp; Shipping</tspan></text>
+<text x="494" y="169"><tspan class="fk" fill="#475569">  EDUCATION </tspan><tspan class="fv" fill="#E2E8F0">Computer Science Student</tspan></text>
+
+<!-- Section 2: STACK.MATRIX -->
+<rect x="480" y="225" width="686" height="160" rx="5" fill="#F59E0B" fill-opacity="0.03" stroke="#F59E0B" stroke-opacity="0.2" stroke-width="0.8"/>
+<text x="490" y="243" class="sec" fill="#F59E0B" opacity="0.92">◆ STACK.MATRIX  //  SKILL.LEVELS</text>
+<line x1="490" y1="248" x2="1155" y2="248" stroke="#F59E0B" stroke-width="0.6" opacity="0.28"/>
+<text x="494" y="266"><tspan class="sk" fill="#475569">  Laravel    </tspan><tspan class="sb" fill="#F59E0B">███████████████░</tspan><tspan class="sk" fill="#FCD34D"> 91%  </tspan><tspan class="sk" fill="#475569">Web Backend</tspan></text>
+<text x="494" y="283"><tspan class="sk" fill="#475569">  PHP        </tspan><tspan class="sb" fill="#A78BFA">██████████████░░</tspan><tspan class="sk" fill="#C4B5FD"> 88%  </tspan><tspan class="sk" fill="#475569">Server Logic</tspan></text>
+<text x="494" y="300"><tspan class="sk" fill="#475569">  Flutter    </tspan><tspan class="sb" fill="#0EA5E9">████████████░░░░</tspan><tspan class="sk" fill="#7DD3FC"> 82%  </tspan><tspan class="sk" fill="#475569">Mobile Dev</tspan></text>
+<text x="494" y="317"><tspan class="sk" fill="#475569">  JavaScript </tspan><tspan class="sb" fill="#10B981">███████████░░░░░</tspan><tspan class="sk" fill="#6EE7B7"> 79%  </tspan><tspan class="sk" fill="#475569">Frontend</tspan></text>
+<text x="494" y="334"><tspan class="sk" fill="#475569">  MySQL      </tspan><tspan class="sb" fill="#FB923C">█████████░░░░░░░</tspan><tspan class="sk" fill="#FED7AA"> 74%  </tspan><tspan class="sk" fill="#475569">Database</tspan></text>
+<text x="494" y="351"><tspan class="sk" fill="#475569">  Dart       </tspan><tspan class="sb" fill="#FB7185">████████░░░░░░░░</tspan><tspan class="sk" fill="#FCA5A5"> 68%  </tspan><tspan class="sk" fill="#475569">Flutter SDK</tspan></text>
+
+<!-- Section 3: BUILD.LOG -->
+<rect x="480" y="396" width="686" height="120" rx="5" fill="#10B981" fill-opacity="0.03" stroke="#10B981" stroke-opacity="0.2" stroke-width="0.8"/>
+<text x="490" y="414" class="sec" fill="#10B981" opacity="0.92">◆ BUILD.LOG  //  DEPLOYED.PROJECTS</text>
+<line x1="490" y1="419" x2="1155" y2="419" stroke="#10B981" stroke-width="0.6" opacity="0.28"/>
+<text x="494" y="437" class="br"><tspan fill="#475569">  [01] </tspan><tspan fill="#FCD34D">Portfolio    </tspan><tspan fill="#475569">→ </tspan><tspan fill="#38BDF8">rif123v2.vercel.app</tspan><tspan fill="#10B981">  ✓ LIVE  </tspan><tspan fill="#475569">[WEB]</tspan></text>
+<text x="494" y="454" class="br"><tspan fill="#475569">  [02] </tspan><tspan fill="#FCD34D">APK Absensi  </tspan><tspan fill="#475569">→ </tspan><tspan fill="#E2E8F0">Android Attendance App</tspan><tspan fill="#475569">       [MOBILE]</tspan></text>
+<text x="494" y="471" class="br"><tspan fill="#475569">  [03] </tspan><tspan fill="#FCD34D">Keuangan     </tspan><tspan fill="#475569">→ </tspan><tspan fill="#E2E8F0">Financial Tracker App</tspan><tspan fill="#475569">         [MOBILE]</tspan></text>
+<text x="494" y="488" class="br"><tspan fill="#475569">  [04] </tspan><tspan fill="#FCD34D">Web Psikolog </tspan><tspan fill="#475569">→ </tspan><tspan fill="#E2E8F0">Psychologist Portal</tspan><tspan fill="#475569">           [WEB]</tspan></text>
+
+<!-- Section 4: GRID.NODES -->
+<rect x="480" y="528" width="686" height="76" rx="5" fill="#A78BFA" fill-opacity="0.03" stroke="#A78BFA" stroke-opacity="0.2" stroke-width="0.8"/>
+<text x="490" y="546" class="sec" fill="#A78BFA" opacity="0.92">◆ GRID.NODES  //  NETWORK.LINKS</text>
+<line x1="490" y1="551" x2="1155" y2="551" stroke="#A78BFA" stroke-width="0.6" opacity="0.28"/>
+<text x="494" y="569" class="br"><tspan fill="#475569">  ◈ GH  </tspan><tspan fill="#E2E8F0">github.com/rifqi8567</tspan><tspan fill="#475569">         ◈ IG  </tspan><tspan fill="#E2E8F0">@muhammad_rifqy_</tspan></text>
+<text x="494" y="586" class="br"><tspan fill="#475569">  ◈ LI  </tspan><tspan fill="#E2E8F0">linkedin.com/in/muhamnadrifqi</tspan><tspan fill="#475569">  ◈ WA  </tspan><tspan fill="#E2E8F0">+62 823-1039-2362</tspan></text>
+
+<!-- FOOTER -->
+<line x1="0" y1="607" x2="1180" y2="607" stroke="#F59E0B" stroke-width="0.8" opacity="0.18"/>
+<rect x="0" y="606" width="0" height="2" rx="1" fill="#F59E0B" opacity="0.75">
+  <animate attributeName="width" values="0;1180;0" dur="5s" repeatCount="indefinite"/>
+</rect>
+<text x="590" y="616" text-anchor="middle" class="ft" fill="#374151">LARAVEL  ◆  FLUTTER  ◆  JAVASCRIPT  ◆  PHP  ◆  DART  ◆  MySQL  ◆  SUPABASE  ◆  FULLSTACK.DEV</text>
+
+<!-- OUTER CORNER DECO -->
+<path d="M2 2H52 M2 2V52" fill="none" stroke="#F59E0B" stroke-width="2" opacity="0.7"/>
+<circle cx="2" cy="2" r="3.5" fill="#F59E0B" opacity="0.9"/>
+<path d="M1178 2H1128 M1178 2V52" fill="none" stroke="#F59E0B" stroke-width="2" opacity="0.7"/>
+<circle cx="1178" cy="2" r="3.5" fill="#F59E0B" opacity="0.9"/>
+<path d="M2 618H52 M2 618V568" fill="none" stroke="#F59E0B" stroke-width="2" opacity="0.7"/>
+<circle cx="2" cy="618" r="3.5" fill="#F59E0B" opacity="0.9"/>
+<path d="M1178 618H1128 M1178 618V568" fill="none" stroke="#F59E0B" stroke-width="2" opacity="0.7"/>
+<circle cx="1178" cy="618" r="3.5" fill="#F59E0B" opacity="0.9"/>
+<text x="56" y="16" class="hd-sm" fill="#F59E0B" opacity="0.35">X:0,Y:0</text>
+<text x="1124" y="16" text-anchor="end" class="hd-sm" fill="#F59E0B" opacity="0.35">X:1180,Y:0</text>
+
+<!-- Global scanline sweep -->
+<rect x="0" y="-65" width="1180" height="65" fill="url(#scan)" opacity="0.16">
+  <animateTransform attributeName="transform" type="translate" from="0 -65" to="0 685" dur="7s" repeatCount="indefinite"/>
+</rect>
+</svg>'''
+
+
+# ──────────────────────────────────────────────────────────────
+#  MOBILE SVG  (760 × 620) – stacked layout
+# ──────────────────────────────────────────────────────────────
+MOBILE_CSS = """
+    .mono-m{font-family:'Courier New',Consolas,monospace;}
+    .asc-m{font-family:'Courier New',Consolas,monospace;font-size:7px;letter-spacing:-0.1px;}
+    .hd-m{font-family:'Courier New',Consolas,monospace;font-size:12px;font-weight:700;letter-spacing:3px;}
+    .sm-m{font-family:'Courier New',Consolas,monospace;font-size:9px;letter-spacing:1.5px;}
+    .info-m{font-family:'Courier New',Consolas,monospace;font-size:11px;}
+    .sec-m{font-family:'Courier New',Consolas,monospace;font-size:8.5px;font-weight:700;letter-spacing:2px;}
+    text,tspan{white-space:pre;}
+"""
+
+def build_mobile(ascii_lines):
+    # Mobile: portrait fills full width (760px), x_start centered
+    # char width at 7px font, -0.1 spacing ≈ 4.1px each
+    # 98 chars × 4.1 = 401.8px → center: x = (740 - 401.8)/2 + 10 ≈ 179
+    tspans = build_tspans(ascii_lines, x=179, y0=72.0, dy=6.8)
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="760" height="620" viewBox="0 0 760 620" role="img" aria-labelledby="svg-title-m">
+<title id="svg-title-m">Muhammad Rifqi | Fullstack Developer</title>
+<defs>
+  <linearGradient id="bg-m" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#040912"/><stop offset="1" stop-color="#070E1E"/>
+  </linearGradient>
+  <linearGradient id="amb-m" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#FCD34D"><animate attributeName="stop-color" values="#FCD34D;#F59E0B;#FCD34D" dur="6s" repeatCount="indefinite"/></stop>
+    <stop offset="1" stop-color="#F97316"><animate attributeName="stop-color" values="#F97316;#FCD34D;#F97316" dur="8s" repeatCount="indefinite"/></stop>
+  </linearGradient>
+  <linearGradient id="bdr-m" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#F59E0B" stop-opacity="0.85"/>
+    <stop offset="0.5" stop-color="#0EA5E9" stop-opacity="0.85"/>
+    <stop offset="1" stop-color="#F59E0B" stop-opacity="0.85"/>
+  </linearGradient>
+  <radialGradient id="glow-m" cx="50%" cy="45%">
+    <stop offset="0" stop-color="#F59E0B" stop-opacity="0.18"/>
+    <stop offset="1" stop-color="#F59E0B" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="scan-m" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#F59E0B" stop-opacity="0"/>
+    <stop offset="0.5" stop-color="#F59E0B" stop-opacity="0.22"/>
+    <stop offset="1" stop-color="#F59E0B" stop-opacity="0"/>
+  </linearGradient>
+  <pattern id="circ-m" width="60" height="60" patternUnits="userSpaceOnUse">
+    <path d="M0 30H20 M20 30V10 M20 10H40" fill="none" stroke="#0EA5E9" stroke-width="0.5" opacity="0.07"/>
+    <circle cx="20" cy="10" r="1.5" fill="#F59E0B" opacity="0.1"/>
+  </pattern>
+  <clipPath id="clip-m"><rect x="10" y="58" width="740" height="400" rx="6"/></clipPath>
+  <mask id="mask-m">
+    <rect x="10" y="58" width="740" height="0" rx="6" fill="white">
+      <animate attributeName="height" from="0" to="400" dur="2s" begin="0.2s" fill="freeze"/>
+    </rect>
+  </mask>
+  <filter id="glitch-m">
+    <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="1" result="n" seed="3"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" xChannelSelector="R" yChannelSelector="G" scale="0">
+      <animate attributeName="scale" values="0;0;0;4;0;0" keyTimes="0;0.72;0.74;0.76;0.78;1" dur="7s" repeatCount="indefinite"/>
+    </feDisplacementMap>
+  </filter>
+  <style>{MOBILE_CSS}</style>
+</defs>
+
+<rect width="760" height="620" rx="14" fill="url(#bg-m)"/>
+<rect width="760" height="620" rx="14" fill="url(#circ-m)"/>
+<rect x="1.5" y="1.5" width="757" height="617" rx="13" fill="none" stroke="url(#bdr-m)" stroke-width="2">
+  <animate attributeName="opacity" values="0.5;0.95;0.5" dur="4.5s" repeatCount="indefinite"/>
+</rect>
+
+<!-- Header -->
+<rect x="0" y="0" width="760" height="48" rx="14" fill="#040912" fill-opacity="0.96"/>
+<rect x="0" y="33" width="760" height="15" fill="#040912" fill-opacity="0.96"/>
+<line x1="0" y1="48" x2="760" y2="48" stroke="#F59E0B" stroke-width="1" opacity="0.38"/>
+<text x="380" y="31" text-anchor="middle" class="hd-m" fill="#E2E8F0" filter="url(#glitch-m)">RIFQI.SYS  ◆  NEURAL.DEVNET</text>
+<circle cx="734" cy="24" r="5" fill="#10B981">
+  <animate attributeName="r" values="4;6.5;4" dur="2.5s" repeatCount="indefinite"/>
+  <animate attributeName="fill-opacity" values="1;0.45;1" dur="2.5s" repeatCount="indefinite"/>
+</circle>
+<rect x="16" y="16" width="5" height="20" rx="1" fill="#F59E0B"><animate attributeName="opacity" values="0.9;0.4;0.9" dur="1.1s" repeatCount="indefinite"/></rect>
+<rect x="25" y="20" width="5" height="16" rx="1" fill="#F59E0B"><animate attributeName="opacity" values="0.7;0.3;0.7" dur="1.4s" repeatCount="indefinite"/></rect>
+<rect x="34" y="24" width="5" height="12" rx="1" fill="#F59E0B" opacity="0.35"/>
+
+<!-- Portrait -->
+<text x="380" y="55" text-anchor="middle" class="sec-m" fill="#F59E0B" opacity="0.65">◈ BIOMETRIC.SCAN // AUTHORIZED ◈</text>
+<g clip-path="url(#clip-m)">
+  <rect x="10" y="58" width="740" height="400" fill="#F59E0B" fill-opacity="0.02"/>
+  <ellipse cx="380" cy="258" rx="310" ry="200" fill="url(#glow-m)"/>
+</g>
+<g clip-path="url(#clip-m)" mask="url(#mask-m)">
+  <text class="asc-m" fill="url(#amb-m)" font-family="'Courier New',Consolas,monospace" font-size="7px" letter-spacing="-0.1px">
+{tspans}
+  </text>
+</g>
+<!-- Brackets -->
+<path d="M10 58H45 M10 58V93" fill="none" stroke="#F59E0B" stroke-width="2.2" opacity="0.85"><animate attributeName="opacity" values="0.85;0.4;0.85" dur="3s" repeatCount="indefinite"/></path>
+<path d="M750 58H715 M750 58V93" fill="none" stroke="#F59E0B" stroke-width="2.2" opacity="0.85"><animate attributeName="opacity" values="0.85;0.4;0.85" dur="3s" begin="0.75s" repeatCount="indefinite"/></path>
+<path d="M10 458H45 M10 458V423" fill="none" stroke="#F59E0B" stroke-width="2.2" opacity="0.85"><animate attributeName="opacity" values="0.85;0.4;0.85" dur="3s" begin="1.5s" repeatCount="indefinite"/></path>
+<path d="M750 458H715 M750 458V423" fill="none" stroke="#F59E0B" stroke-width="2.2" opacity="0.85"><animate attributeName="opacity" values="0.85;0.4;0.85" dur="3s" begin="2.25s" repeatCount="indefinite"/></path>
+<!-- Pulse rings -->
+<circle cx="10" cy="58" r="3" fill="none" stroke="#F59E0B" stroke-width="1">
+  <animate attributeName="r" values="3;22;3" dur="4s" repeatCount="indefinite"/>
+  <animate attributeName="opacity" values="0.8;0;0.8" dur="4s" repeatCount="indefinite"/>
+</circle>
+<!-- Scan -->
+<rect x="10" y="0" width="740" height="60" fill="url(#scan-m)" opacity="0.8">
+  <animateTransform attributeName="transform" type="translate" from="0 58" to="0 458" dur="5.5s" repeatCount="indefinite"/>
+</rect>
+
+<!-- Info section -->
+<line x1="10" y1="468" x2="750" y2="468" stroke="#F59E0B" stroke-width="0.8" opacity="0.2"/>
+<rect x="0" y="468" width="0" height="1" rx="1" fill="#F59E0B" opacity="0.7">
+  <animate attributeName="width" values="0;760;0" dur="4.5s" repeatCount="indefinite"/>
+</rect>
+<text x="380" y="491" text-anchor="middle" class="info-m" fill="#FCD34D">Muhammad Rifqi Thufail Fahmi</text>
+<text x="380" y="509" text-anchor="middle" class="info-m" fill="#64748B">Fullstack Developer  ◆  Laravel  /  Flutter  /  JS</text>
+<text x="380" y="527" text-anchor="middle" class="info-m" fill="#64748B">Indonesia  ◆  <tspan fill="#10B981">● ACTIVE</tspan><tspan fill="#64748B">  ◆  Building &amp; Shipping</tspan></text>
+<text x="380" y="545" text-anchor="middle" class="info-m" fill="#475569">github.com/rifqi8567  //  rif123v2.vercel.app</text>
+
+<line x1="10" y1="557" x2="750" y2="557" stroke="#F59E0B" stroke-width="0.8" opacity="0.15"/>
+<text x="380" y="576" text-anchor="middle" class="sm-m" fill="#374151">LARAVEL  ◆  FLUTTER  ◆  JAVASCRIPT  ◆  PHP  ◆  MySQL</text>
+<text x="380" y="598" text-anchor="middle" class="sm-m" fill="#1F2937">FULLSTACK.DEV  //  BUILDING &amp; LEARNING &amp; SHIPPING</text>
+
+<!-- Corners -->
+<path d="M2 2H44 M2 2V44" fill="none" stroke="#F59E0B" stroke-width="2" opacity="0.65"/>
+<circle cx="2" cy="2" r="3.5" fill="#F59E0B" opacity="0.9"/>
+<path d="M758 2H716 M758 2V44" fill="none" stroke="#F59E0B" stroke-width="2" opacity="0.65"/>
+<circle cx="758" cy="2" r="3.5" fill="#F59E0B" opacity="0.9"/>
+<path d="M2 618H44 M2 618V576" fill="none" stroke="#F59E0B" stroke-width="2" opacity="0.65"/>
+<circle cx="2" cy="618" r="3.5" fill="#F59E0B" opacity="0.9"/>
+<path d="M758 618H716 M758 618V576" fill="none" stroke="#F59E0B" stroke-width="2" opacity="0.65"/>
+<circle cx="758" cy="618" r="3.5" fill="#F59E0B" opacity="0.9"/>
+
+<!-- Global scan -->
+<rect x="0" y="-60" width="760" height="60" fill="url(#scan-m)" opacity="0.14">
+  <animateTransform attributeName="transform" type="translate" from="0 -60" to="0 680" dur="7s" repeatCount="indefinite"/>
+</rect>
+</svg>'''
+
+
+# ──────────────────────────────────────────────────────────────
+#  MAIN
+# ──────────────────────────────────────────────────────────────
+if __name__ == "__main__":
+    print("Generating desktop ASCII (82×62) from image.png ...")
+    desktop_lines = image_to_ascii("image.png", width=82, height=62)
+    print(f"  → {len(desktop_lines)} lines × {len(desktop_lines[0])} chars")
+
+    print("Building desktop SVGs ...")
+    dsv = build_desktop(desktop_lines)
+    for name in ["agent-console-v5-dark.svg", "agent-console-v5-light.svg"]:
+        with open(f"assets/hero/{name}", "w", encoding="utf-8") as f:
+            f.write(dsv)
+    print("  ✓ Saved dark + light desktop")
+
+    print("Generating mobile ASCII (98×54) ...")
+    mobile_lines = image_to_ascii("image.png", width=98, height=54)
+    print(f"  → {len(mobile_lines)} lines × {len(mobile_lines[0])} chars")
+
+    print("Building mobile SVGs ...")
+    msv = build_mobile(mobile_lines)
+    for name in ["agent-console-v5-mobile-dark.svg", "agent-console-v5-mobile-light.svg"]:
+        with open(f"assets/hero/{name}", "w", encoding="utf-8") as f:
+            f.write(msv)
+    print("  ✓ Saved dark + light mobile")
+
+    print("\n✅ All 4 SVG files updated with new NEURAL.DEVNET design!")
